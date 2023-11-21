@@ -1,11 +1,10 @@
 "use client";
 
-import { ArrowDownToLine, Upload } from "lucide-react";
+import { ArrowDownToLine } from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
 import UploadBtn from "./CldBtn";
 import CloudImage from "./CloudImage";
-import { useState } from "react";
-import { Url } from "url";
 
 export default function Home({ pictureId }: any) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
