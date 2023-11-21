@@ -60,8 +60,8 @@ export default function Home({ pictureId }: any) {
     <>
       <div className="flex justify-center m-8">
         <div className="w-3/4 flex flex-col justify-center items-center">
-          <h2 className="text-7xl font-bold custom_gray text-center m-6">
-            Upload an image to remove the background
+          <h2 className="text-3xl md:text-7xl lg:text-7xl font-bold custom_gray text-center m-6 ">
+            Transform your Photo
           </h2>
           <div className="card shadow-2xl w-72 m-10 p-2 rounded-lg">
             <div className=" flex justify-center p-4">
@@ -76,20 +76,20 @@ export default function Home({ pictureId }: any) {
       </div>
 
       {imageId && ( // Conditionally render the last div only if there is an image
-        <div className="last-div">
-          <div className="image flex justify-center p-20 gap-6">
-            <div className="original w-1/2">
+        <div className="last-div p-6">
+          <div className="image flex flex-col md:flex-row lg:flex-row justify-center md:p-20 lg:p-20 gap-6">
+            <div className="original md:w-1/2 lg:w-1/2">
               <p className="my-9 text-gray-500 font-semibold text-center">
                 Original
               </p>
               <CloudImage src={imageId} width={550} height={250} />
             </div>
-            <div className="bg-removed w-1/2">
+            <div className="bg-removed md:w-1/2 lg:1/2">
               <p className="my-6 text-gray-500 font-semibold text-center">
                 <button
                   onClick={handleRemoveBackground}
                   disabled={isLoading}
-                  className="bg-blue-600 p-3 text-white rounded-full mx-2"
+                  className="bg-blue-600 p-3 hidden md:block lg:block text-white rounded-full mx-2"
                 >
                   {isLoading ? "Processing..." : "Remove Background"}
                 </button>

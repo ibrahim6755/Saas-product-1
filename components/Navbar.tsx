@@ -9,15 +9,17 @@ const Navbar = () => {
     <div id="nav">
       <div className="flex items-center justify-between p-6 mx-auto">
         <ul className="flex items-center p-0 m-0">
-          <li className="mx-4">
+          <li className="md:mx-4 lg:mx-4">
             <a href="/" className="flex items-center">
               <Image src="/images/logo.png" alt="Logo" width={50} height={43} />
               <h1 className="custom_gray font-bold text-4xl mx-4">
-                remove <span className="text-gray-400">bg</span>
+                Photo <span className="text-gray-400">T</span>
               </h1>
             </a>
           </li>
-          <li className="mx-4">
+        </ul>
+        <ul className="hidden md:flex lg:flex ">
+          <li className="mx-4 ">
             <a href="/" className="text-gray-600">
               Remove background
             </a>
