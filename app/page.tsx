@@ -13,9 +13,10 @@ export default function Home({ pictureId }: any) {
     undefined | "removeBackground" | "pixelate" | "grayscale"
   >();
   const [imageId, setImageId] = useState<string | undefined>();
+  const [assetId, setAssetId] = useState<string | undefined>();
   const handleUploadSuccess = (result: any) => {
     // 'result.info.public_id' contains the Cloudinary public ID
-    // console.log("Upload successful. Picture ID:", result.info.public_id);
+    setAssetId(result.info.asset_id);
     setImageId(result.info.public_id);
     // You can store the picture ID in state or use it as needed
   };
@@ -47,9 +48,14 @@ export default function Home({ pictureId }: any) {
     setIsLoading(false);
   };
   const handleDownload = () => {
-    if (imageId && transformation === "removeBackground") {
-      // Generate Cloudinary URL with transformation for the background-removed image
-      const cloudinaryUrl = `https://res.cloudinary.com/your-cloud-name/image/upload/${transformation}/${imageId}.png`;
+    if (
+      imageId &&
+      (transformation === "removeBackground" ||
+        transformation === "pixelate" ||
+        transformation === "grayscale")
+    ) {
+      // Generate Cloudinary URL with transformation for the image
+      const cloudinaryUrl = `https://console.cloudinary.com/console/c-1b03fc7bbac6e00e1179123caa1d3f/media_library/homepage/asset/${assetId}/manage?context=manage`;
 
       // Open the Cloudinary URL in a new tab for download
       window.open(cloudinaryUrl, "_blank");
@@ -85,7 +91,7 @@ export default function Home({ pictureId }: any) {
               <CloudImage src={imageId} width={550} height={250} />
             </div>
             <div className="bg-removed md:w-1/2 lg:1/2">
-              <p className="my-6 text-gray-500 font-semibold text-center">
+              <p className="my-6 text-gray-500 font-semibold md:flex md:items-center text-center">
                 <button
                   onClick={handleRemoveBackground}
                   disabled={isLoading}
